@@ -17,11 +17,11 @@
         {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
         {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
     }
+\newcommand{\RSr}{\frac{2GM}{r}}
 \newcommand{\metr}{g_{\mu\nu}}
 \newcommand{\metrup}{g^{\mu\nu}}
 \newcommand{\half}{\frac{1}{2}}
-\newcommand{\munu}[2] {_{\mu\nu}}
-\newcommand{\munuup}[2] {^{\mu\nu}}
+\newcommand{\munu} {\mu\nu}
 \newcommand{\der}[2] {\frac{d #1}{d #2}}
 \newcommand{\dder}[2] {\frac{d^2 #1}{d #2^2}}
 \newcommand{\pd}[2] {\frac{\partial #1}{\partial #2}}
@@ -278,8 +278,16 @@ Equation of hydrostatic equilibrium.
 
 \textbf{Energy Momentum for electromagnetism}
 \begin{align}
-    T_{\munu} = F_{\mu\rho}F_{\nu}^{\rho}
+    T_{\munu} = F_{\mu\rho}F_{\nu}^{\rho}-\frac{1}{4}g_{\munu}F_{\rho\sigma}F^{\rho\sigma}
 \end{align}
+Where $F_{\munu}$ is the electromagnetic field strength tensor.
+
+\textbf{The metric (Reissner-Nordström metric (RN))}
+\begin{align}
+    ds^2 &=& -\Delta dt^2 + \delta^{-1}dr^2+r^2d\Omega^2\\
+    \Delta &=& 1 -\RSr + \frac{G(Q^2+P^2)}{r^2}
+\end{align}
+Where Q is total electric charge and P is total magnetic charge.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 7 Perturbation and Gravitational Radiation %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,7 +310,8 @@ Equation of hydrostatic equilibrium.
 
 
 \section{Notes}
-Write down all killing-vectors
+Write down all killing-vectors\\
+Add all lorentz matrixes\\
 
 \end{multicols}
 \end{document}
