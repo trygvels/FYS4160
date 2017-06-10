@@ -1,0 +1,308 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ amssymb }
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{braket}
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+\newcommand{\metr}{g_{\mu\nu}}
+\newcommand{\metrup}{g^{\mu\nu}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\munu}[2] {_{\mu\nu}}
+\newcommand{\munuup}[2] {^{\mu\nu}}
+\newcommand{\der}[2] {\frac{d #1}{d #2}}
+\newcommand{\dder}[2] {\frac{d^2 #1}{d #2^2}}
+\newcommand{\pd}[2] {\frac{\partial #1}{\partial #2}}
+\renewcommand{\div}[1] {\nabla\cdot\vec{#1}}
+\newcommand{\curl}[1] {\nabla\times\vec{#1}}
+\newcommand{\e}[1] {\times 10^{#1}}
+\newcommand{\mean}[1] {\langle #1 \rangle}
+\newcommand{\expect}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\intfy}{\int_{-\infty}^{\infty}}
+\newcommand{\intzfy}{\int_0^\infty}
+\newcommand{\centerthis}[1]{\makebox[\textwidth]{#1}}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% 1 SR and Flat Spacetime %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{1 SR and Flat Spacetime}
+
+\subsection{Equivilence Principle}
+SEE ALSO 4.7
+\textbf{Weak (WEP)} Inertial mass and gravitational mass of any object are equal. There exists a preferred class of trajectories through spacetime (\textit{inertial} or freely-falling) on which unaccelerated particles travel. Motion of freely-falling particles are the same in a gravitational field and a uniformly accelerated frame, in small enough regions of spacetime.\\
+\textbf{Einsteins (EEP)} In small enough regions of spacetime, the laws of physics reduce to those of SR; it is impossible to detect the existence of a gravitational field by means of local experiments.\\
+\textbf{Strong (SEP)} Includes all laws of physics. Allows for self-gravity.\\
+
+
+\subsection{Dual vectors (\textbf{One-forms/Covariant vectors)}}
+Dual space is the space of all linear maps from the original vector space to the real numbers. \\
+\textbf{Dual vectors - Lower indices}. $\omega (V)=\omega_{\mu}V^{\mu} \in \textbf{R}$\\
+\textbf{Simplest example: Gradient of scalar function} $d\phi=\pd{\phi}{x^{\mu}}\hat{\theta}^{(\mu)}$\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% 2 Manifolds %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{2 Manifolds}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% 3 Curvature %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{3 Curvature}
+
+\textbf{Christoffel symbol}, "Connection". Relates vectors in the tangent spaces of nearby points.
+\begin{align}
+    \Gamma_{\lambda}^{\mu\nu} = \frac{1}{2} g^{\lambda \sigma} (\partial_{\mu}g_{\nu\sigma}+\partial_{\nu}g_{\sigma\mu}-\partial_{\sigma}g_{\mu\nu})
+\end{align}
+
+Fundamental usage of Christoffel is the Covariant derivative. \textbf{Cocariant Derivative} of vector field:
+\begin{align}
+    \nabla_{\mu}V^{\nu}=\partial_\mu V^{\nu}+\Gamma^{\nu}_{\mu\sigma}V^{\sigma}
+\end{align}
+Where the second term accounts for curvature corrections. Expression for a One-form:
+\begin{align}
+        \nabla_{\mu}\omega_{\nu}=\partial_\mu \omega_{\nu}-\Gamma^{\lambda}_{\mu\nu}\omega_{\lambda}
+\end{align}
+
+\textbf{Geodesic}:
+\begin{align}
+    \dder{x^{\mu}}{\lambda}+\Gamma^{\mu}_{\rho\sigma} \der{x^{\rho}}{\lambda}\der{x^{\sigma}}{\lambda}=0
+\end{align}
+
+\textbf{Riemann tensor}; the technical expression of curvature. Will vanish only if curvature is flat.:
+\begin{align}
+    R^{\rho}_{\sigma\mu\nu}=\partial_{\mu}\Gamma^{\rho}_{\nu\sigma}-\partial_{\nu}\Gamma^{\rho}_{\mu\sigma}+\Gamma^{\rho}_{\mu\lambda}\Gamma^{\lambda}_{\nu\sigma}-\Gamma^{\rho}_{\nu\lambda}\Gamma^{\lambda}_{\mu\sigma}
+\end{align}
+
+\textbf{Stokes Theorem}:
+\begin{align}
+    \int_{\Sigma} \nabla_{\mu}V^{\mu}\sqrt{|g|}d^nx=\int_{\partial \Sigma} n_{\mu}V^{\mu}\sqrt{|\gamma|}d^{n-1}x
+\end{align}
+
+\subsection{Riemann (3.something)}
+\textbf{Ricci tensor}
+\begin{align}
+    R_{\mu\nu}=R^{\lambda}_{\mu\lambda\nu}
+\end{align}
+Which is symmetric.
+\textbf{Ricci Scalar} Trace of Ricci tensor.
+$R=R^{\mu}_{\mu} = g^{\mu\nu}R_{\mu\nu}$
+\textbf{Bianchi Identity}
+\begin{align}
+    \nabla^{\mu}R_{\rho\mu}=\frac{1}{2}\nabla_{\rho}R
+\end{align}
+\textbf{Einstein tensor}
+\begin{align}
+    G_{\mu\nu} = R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu}
+\end{align}
+Twice contracted Bianchi identity $\nabla^{\mu}G_{\mu\nu}$ \\
+
+\textbf{Geodesic Deviation Equation} measures the deviation between nearby geodesics.
+\begin{align}
+    A^{\mu}=\frac{D^2}{dt^2}S^{\mu}=R^{\mu}_{\nu\rho\sigma}T^{\nu}T^{\rho}S^{\sigma}
+\end{align}
+
+\section{Energy-momentum}
+\textbf{Tensor} $T^{\mu\nu} = (\rho + p) U^{\mu}U^{\nu} + p\eta^{\mu\nu}$ For perfect fluid. \\
+\textbf{Conservation} $\partial_{\mu} T^{\mu\nu} = 0$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% 4 Gravitation %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{4 Gravitation}
+\textbf{Minimal-coupling principle}
+\begin{itemize}
+    \item Take a law of physics valid in all inertial coordinates in flat spacetime
+    \item Write it in a coordinate-invariant (Tensorial) form
+    \item Assert that the resulting law remains true in curved spacetime
+\end{itemize}
+Basically the replacing Minkowski metric with a general metric and replacing partial derivatives with covariant ones  ("Comma-Goes-to-Semicolon Rule").
+
+\textbf{The Newtonian limit}
+\begin{itemize}
+    \item Particles move slowly (non-rel) $\der{x^i}{\tau}\ll\der{t}{\tau}$
+    \item Gravitational field is weak (Considered a perturbation) $g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$
+    \item Field is static (Unchanging in time) $\partial g_{\mu\nu}=0$
+\end{itemize}
+Energy-Momentum tensor in Newtonian limit: $T_{\mu\nu}=\rho U_{\mu}U_{\nu}$\\
+
+Einstein's equation alternative:
+\begin{align}
+    R_{\mu\nu}=8\pi G (T_{\mu\nu}-\half Tg_{\mu\nu})
+\end{align}
+
+\subsection{The Hilbert Action}
+\begin{align}
+    S_H = \int \sqrt{-g} R d^nx
+\end{align}
+\subsection{Noether's theorem} every symmetry of a Lagrangian implies the existance of a conservation law; invariance under the four spacetime translations leads to a tensor $S^{\mu\nu}$:
+
+\begin{align}
+    S^{\mu\nu}=\frac{\delta\mathcal{L}}{\delta(\partial_{\mu}\Phi^i)}\partial^{\nu}\Phi^i-\eta^{\mu\nu}\mathcal{L}
+\end{align}
+
+\subsection{Cosmological Constant}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 5 Schwarzchild %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{5 The Schwarzschild Solution}
+
+A vacuum solution with perfect spherical symmetry.
+
+\begin{align}
+    ds^2 =& -\left(1-\frac{2GM}{r}\right)dt^2+\left(1-\frac{2GM}{r}\right)^{-1}dr^2 + r^2d\Omega^2 \\
+    d\Omega^2 =& d\theta^2 + \sin^2\theta d\phi^2
+\end{align}
+
+The solution is outside a spherical body, we care about Einsteins equation in vacuum $R_{\mu \nu}=0$
+
+\begin{align}
+    -E^2 +\left(\der{r}{\lambda}\right)^2+\left(1-\frac{2GM}{r}\right)\left(\frac{L^2}{r^2}+\epsilon\right) = 0
+\end{align}
+Can be written as:
+\begin{align}
+    \half\left(\der{r}{\lambda}\right)^2+V(r)=\mathcal{E}
+\end{align}
+
+\textbf{Birkhoff's Theorem}
+The statement that the Schwarzschild metric is the \textit{unique} vacuum solution with spherical symmetry.
+
+\textbf{Deflection angle of photon around SBH}
+\begin{align}
+    \Delta \Theta_0=\frac{4MG}{b}
+\end{align}
+\textbf{Lorentz boost matrix}
+\begin{align}
+    \Lambda =
+    \begin{pmatrix}
+  \gamma & \gamma v & 0 & 0 \\
+  \gamma v & \gamma & 0 & 0 \\
+   0 & 0 & 1 & 0 \\
+   0 & 0 & 0 & 1
+ \end{pmatrix}
+\end{align}
+
+\subsection{Stable orbits}
+\textbf{WRITE SOMETHING HERE}
+
+\subsection{Observed frequency of photon}
+Along null geodesic:
+\begin{align}
+    \omega=\metr U^{\mu} \der{x^{\nu}}{\lambda}
+\end{align}
+Observed frequency when climbing out of potential is $\omega_2/\omega_1$
+
+\textbf{Tolman-Oppenheimer-Volkoff equation}\\
+Equation of hydrostatic equilibrium.
+\begin{align}
+    \der{p}{r} = - \frac{(\rho+p)[Gm(r)+4\pi Gr^3p]}{r[r-2gm(r)]}
+\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% 6 Black Holes %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{6 Black Holes}
+\textbf{Current} $J^{\mu}_R = K_{\nu}R^{\munu}$
+\textbf{Komar integral} associated with the timelike Killing vector $K^{\mu}$ can be interpreted as the total energy of a stationary spacetime:
+\begin{align}
+    E_R=\frac{1}{4\pi G} \int_{\partial \Sigma} d^2x \sqrt{\gamma^{(2)}}n_{\mu}\sigma_{\nu}\nabla^{\mu}K^{\nu}
+\end{align}
+\textbf{Conserved angular momentum}
+\begin{align}
+    J = -\frac{1}{8\pi G} \int_{\partial \Sigma} d^2x \sqrt{\gamma^{(2)}}n_{\mu}\sigma_{\nu}\nabla^{\mu}R^{\nu}
+\end{align}
+
+
+\subsection{Charged Black holes}
+
+\textbf{Energy Momentum for electromagnetism}
+\begin{align}
+    T_{\munu} = F_{\mu\rho}F_{\nu}^{\rho}
+\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 7 Perturbation and Gravitational Radiation %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{7 Perturbation and Gravitational Radiation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% 8 Cosmology %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{8 Cosmology}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Metrics %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{List of Metrics}
+\textbf{Eddington-Finkelstein Coordinates}
+\textbf{Kruskal Coordinates p. 225}
+
+
+
+\section{Notes}
+Write down all killing-vectors
+
+\end{multicols}
+\end{document}
